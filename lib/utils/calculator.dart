@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:calc_unilar/screens/calc_screen.dart';
 
 class Venda {

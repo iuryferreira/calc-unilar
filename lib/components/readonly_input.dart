@@ -1,8 +1,6 @@
-import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
-import '../constants.dart';
 
 class ReadOnlyInput extends StatelessWidget {
   ReadOnlyInput(

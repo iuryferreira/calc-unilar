@@ -1,20 +1,16 @@
-import 'package:brasil_fields/brasil_fields.dart';
 import 'package:calc_unilar/components/readonly_input.dart';
 import 'package:calc_unilar/screens/calc_screen.dart';
+import 'package:calc_unilar/utils/calculator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
-import '../calculator.dart';
+import 'package:calc_unilar/utils/constants.dart';
 import '../components/reusable_card.dart';
 import '../components/bottom_button.dart';
-import '../constants.dart';
 
 class ResultPage extends StatelessWidget {
-  ResultPage({@required this.interpretation, @required this.venda});
+  ResultPage({this.venda});
 
   final Venda venda;
-
-  final String interpretation;
 
   verificaValor(value) {
     if (value == null) {
@@ -36,10 +32,8 @@ class ResultPage extends StatelessWidget {
 
   bool isEntrance() {
     return venda.selectedPaymentMethod == PaymentMethod.withEntrance
-        ? true
-        : false;
-  }
-
+        ? true : false;
+  } 
   String getPaymentMethod() {
     if (venda.selectedPaymentMethod == PaymentMethod.money) {
       return "À Vista";
@@ -50,8 +44,7 @@ class ResultPage extends StatelessWidget {
     }
   }
 
-  MoneyMaskedTextController valuesController =
-      MoneyMaskedTextController(decimalSeparator: ',', thousandSeparator: '.');
+  MoneyMaskedTextController valuesController = MoneyMaskedTextController(decimalSeparator: ',', thousandSeparator: '.');
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,5 +1,6 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:calc_unilar/calculator.dart';
+import 'package:calc_unilar/utils/calculator.dart';
+import 'package:calc_unilar/validators/money_input.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,7 +9,7 @@ import '../components/reusable_card.dart';
 import '../components/icon_content.dart';
 import '../components/bottom_button.dart';
 import '../components/round_icon_button.dart';
-import '../constants.dart';
+import '../utils/constants.dart';
 import 'result_page.dart';
 
 enum PaymentMethod { money, downPayment, withEntrance }
@@ -78,7 +79,7 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Calculadora - Rede Unilar'),
         elevation: 0.0,
@@ -216,7 +217,8 @@ class _InputPageState extends State<InputPage> {
                                 hintText: "0,00",
                               ),
                               textAlign: TextAlign.center,
-                              
+                              validator: (value) =>
+                                  MoneyInputValidator.validate(value),
                               onChanged: (String value) {
                                 value = value.replaceAll(".", '');
                                 value = value.replaceAll(",", '.');
@@ -271,7 +273,7 @@ class _InputPageState extends State<InputPage> {
                                   value = value.replaceAll(",", '.');
                                   valueEntrance = double.parse(value);
                                 },
-                                validator: (String value) {
+                                validator: (value) {
                                   value = value.replaceAll(".", '');
                                   value = value.replaceAll(",", '.');
                                   if (double.parse(value) == 0.0) {
@@ -362,7 +364,6 @@ class _InputPageState extends State<InputPage> {
                   MaterialPageRoute(
                     builder: (context) => ResultPage(
                       venda: venda,
-                      interpretation: "",
                     ),
                   ),
                 );

@@ -1,4 +1,4 @@
-import 'package:calc_unilar/constants.dart';
+import 'package:calc_unilar/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'screens/calc_screen.dart';
 import 'screens/result_page.dart';

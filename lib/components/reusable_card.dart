@@ -1,5 +1,3 @@
-import 'package:calc_unilar/constants.dart';
-import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 
 class ReusableCard extends StatelessWidget {
